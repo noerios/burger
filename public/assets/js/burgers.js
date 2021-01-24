@@ -1,8 +1,8 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-  $(".change-sleep").on("click", function(event) {
+  $(".change-eat").on("click", function(event) {
     var id = $(this).data("id");
-    var newEat = $(this).data("newsleep");
+    var newEat = $(this).data("neweat");
 
     var newEatState = {
       eaten: newEat
@@ -14,7 +14,7 @@ $(function() {
       data: newEatState
     }).then(
       function() {
-        console.log("changed sleep to", newEat);
+        console.log("changed eat to", newEat);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -27,7 +27,7 @@ $(function() {
 
     var newBurger = {
       name: $("#ca").val().trim(),
-      eaten: $("[name=sleepy]:checked").val().trim()
+      eaten: $("[name=eaten]:checked").val().trim()
     };
 
     // Send the POST request.
