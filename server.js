@@ -1,4 +1,5 @@
 var express = require("express");
+var path = require("path");
 var PORT = process.env.PORT || 8080;
 
 var app = express();
@@ -13,7 +14,11 @@ app.use(express.json());
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ 
+  defaultLayout: "main",
+  layoutsDir: path.join(__dirname, "./views/layouts"),
+  partialsDir: path.join(__dirname, "./views/layouts/partials")
+ }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
